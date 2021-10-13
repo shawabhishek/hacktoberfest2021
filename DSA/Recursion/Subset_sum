@@ -1,0 +1,27 @@
+#include <bits/stdc++.h>
+using namespace std;
+void subset(int arr[],int temp[],int n,int i,int size){
+    if(i==n){
+        int ans=0;
+        for(int j=0;j<size;j++)
+        {
+            ans=ans+temp[j];
+        }
+        cout<<ans<<" ";
+        return;
+    }
+    temp[size]=arr[i];
+    subset(arr,temp,n,i+1,size+1);//for yes condition
+    subset(arr,temp,n,i+1,size);//for no
+}
+int main(){
+    int n;
+    cin>>n;
+    int arr[n];
+    for(int i=0;i<n;i++){
+        cin>>arr[i];
+    }
+    int temp[n];
+    subset(arr,temp,n,0,0);
+    return 0;
+}
